@@ -7,6 +7,10 @@ module Prometheus
         raise ArgumentError.new("increment must be a non-negative number") if by < 0.0
         values[label_set_for(labels)] += by
       end
+
+      def observe(labels = {} of Symbol => String, by : Float64 = 1.0)
+        increment(labels, by)
+      end
     end
   end
 end

@@ -12,6 +12,8 @@ module Prometheus
         @validator = LabelSetValidator.new
       end
 
+      abstract def observe
+
       def values
         @values ||= Hash(Hash(Symbol, String), Float64).new { |h, k| h[k] = 0.0 }
       end

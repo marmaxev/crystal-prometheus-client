@@ -14,6 +14,10 @@ module Prometheus
       def decrement(labels = {} of Symbol => String, by : Float64 = 1.0)
         values[label_set_for(labels)] -= by
       end
+
+      def observe(labels = {} of Symbol => String, value : Float64 = 0.0)
+        set(labels, value)
+      end
     end
   end
 end
